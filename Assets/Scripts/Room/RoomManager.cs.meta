@@ -3,7 +3,12 @@ guid: 70a67e135693c8c41ae744b5a0266581
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - characters: {instanceID: 0}
+  - roomName_TEXT: {instanceID: 0}
+  - playerCount_TEXT: {instanceID: 0}
+  - roomUI: {instanceID: 0}
+  - RespawnSpot: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

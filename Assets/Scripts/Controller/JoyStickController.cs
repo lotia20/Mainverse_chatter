@@ -28,24 +28,49 @@ public class JoyStickController : MonoBehaviour, IDragHandler, IPointerUpHandler
     {
         
         player = GameObject.FindWithTag("Player");
+        if (player == null)
+        {
+            Debug.LogWarning("Player object is null in Awake.");
+        }
     }
 
     private void Start()
     {
         radious = joystick_OutLine.rect.width * 0.5f;
     }
+   
 
     private void Update()
     {
-        if (isTouch)
+    if (isTouch)
+    {
+        // player 객체가 null인 경우 예외 처리
+        if (player == null)
         {
-            player.transform.position += move_Vec;
-            if (value != null)
-            {
-                player.transform.rotation = Quaternion.Euler(0.0f, Mathf.Atan2(value.x, value.y) * Mathf.Rad2Deg, 0.0f);
-            }
+            Debug.LogWarning("Player object is null.");
+            return; // 더 이상 실행하지 않고 메서드를 종료
+        }
+
+        player.transform.position += move_Vec;
+        
+        if (value != null)
+        {
+            player.transform.rotation = Quaternion.Euler(0.0f, Mathf.Atan2(value.x, value.y) * Mathf.Rad2Deg, 0.0f);
         }
     }
+    }
+
+    // private void Update()
+    // {
+    //     if (isTouch)
+    //     {
+    //         player.transform.position += move_Vec;
+    //         if (value != null)
+    //         {
+    //             player.transform.rotation = Quaternion.Euler(0.0f, Mathf.Atan2(value.x, value.y) * Mathf.Rad2Deg, 0.0f);
+    //         }
+    //     }
+    // }
     #endregion
 
     #region IEvent
