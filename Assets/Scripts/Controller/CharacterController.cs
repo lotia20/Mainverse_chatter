@@ -23,6 +23,16 @@ public class CharacterController : MonoBehaviourPunCallbacks, IPunObservable
 
     [SerializeField] Animator player_Anim;
 
+    //step offset 스크립트 수정중    
+        public CharacterController controller;
+        public float stepOffset;
+
+    //void Example()
+    //{
+        //controller = GetComponent<CharacterController>();
+        //controller.stepOffset = 5.0F;
+    //}
+    
     #region LifeCycle
     private void Awake()
     {
@@ -30,6 +40,9 @@ public class CharacterController : MonoBehaviourPunCallbacks, IPunObservable
         player_Tr = this.gameObject.GetComponent<Transform>();
         joyStickController = FindObjectOfType<JoyStickController>();
         player_Tr = this.transform;
+
+        controller = GetComponent<CharacterController>();
+        controller.stepOffset = 5.0F;
     }
 
     private void Update()
