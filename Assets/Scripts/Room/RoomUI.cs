@@ -1,12 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 using UnityEngine.UI;
 using TMPro;
 
 using Photon.Pun;
-using Photon.Realtime;
 public class RoomUI : UIManager
 {
     [Header("Room UI Container")]
@@ -71,9 +68,17 @@ public class RoomUI : UIManager
 
     public override void Exit_BTN()
     {
+        if (PhotonNetwork.InRoom)
+    {
         PhotonNetwork.LeaveRoom();
-        Debug.Log(PhotonNetwork.CurrentRoom.Name + "Room => Lobby 이동");
-        AppManager.Instance.ChangeScene(AppManager.eSceneState.Lobby);
+        Debug.Log(PhotonNetwork.CurrentRoom.Name + " Room => Lobby 이동");
+    }
+    else
+    {
+        Debug.Log("플레이어가 방에 없습니다.");
+    }
+
+    AppManager.Instance.ChangeScene(AppManager.eSceneState.Lobby);
     }
     #endregion
 
