@@ -77,7 +77,7 @@ public class RoomUI : UIManager
     {
         Debug.Log("플레이어가 방에 없습니다.");
     }
-
+    
     AppManager.Instance.ChangeScene(AppManager.eSceneState.Lobby);
     }
     #endregion
