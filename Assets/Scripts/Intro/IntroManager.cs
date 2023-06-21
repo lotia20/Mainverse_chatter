@@ -1,19 +1,21 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
-using Photon.Pun;
+using UnityEngine.UI;
 
 
 public class IntroManager : ServerManager
 {
     #region lifecycle
+    [SerializeField]Button Start_BTN;
     private void Awake()
     {
-        StartCoroutine(JoinLobby());
+        
     }
     #endregion
 
+    public void JoinClick(){
+        StartCoroutine(JoinLobby());
+    }
     IEnumerator JoinLobby()
     {
         yield return new WaitForSeconds(1.0f);
